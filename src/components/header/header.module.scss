@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    height: 10vh;
+    background-color: #212121;
+    box-shadow: 2px black;
+    font-size: 1.3rem;
+}
+
+.logo {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    ul{
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        justify-content: flex-end;
+    }
+    li{
+        padding-right:  30px;
+        &:last-child{
+            padding-right: 100px;
+        }
+    }
+}
