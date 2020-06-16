@@ -12,7 +12,7 @@
         cursor: pointer;
       
         & .backgroundImage {
-          transform: scale(1.1);
+          transform: scale(1.2);
           transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
         }
       
@@ -35,5 +35,5 @@
     position: absolute;
     color: white;
     font-size: 3rem;
-    background-color: #2d545e62;
+    background-color: #2d545e79;
     }

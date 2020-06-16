@@ -1,0 +1,20 @@
+.sign {
+  margin: 30px auto;
+  padding-top: 50px;
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+
+  justify-content: space-between;
+
+  i {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+  }
+}
+
+.form {
+  margin: 100px auto;
+  width: 300px;
+}

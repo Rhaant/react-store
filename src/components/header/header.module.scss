@@ -26,8 +26,11 @@
     }
     li{
         padding-right:  30px;
+        border-bottom: 1px white solid;
         &:last-child{
             padding-right: 100px;
         }
     }
+
+
 }

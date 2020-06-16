@@ -1,22 +1,56 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import styles from "./app.module.scss";
 
 import Home from "./views/home.component";
+import Sign from "./views/sign.component";
+
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 
-function App() {
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { setCurrentUser } from "./redux/user/user.actions";
+
+function App({ setCurrentUser }) {
+  useEffect(() => {
+    auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapShot) => {
+          setCurrentUser({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      } else {
+        setCurrentUser(userAuth);
+      }
+    });
+  }, [setCurrentUser]);
+
   return (
     <div className={styles.app}>
       <Header />
-        <Router>
-          <Route path="/" component={Home} />
-        </Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/sign" component={Sign} />
+      </Switch>
       <Footer />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(dispatch(setCurrentUser(user))),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
