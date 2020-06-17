@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import styles from "./app.module.scss";
@@ -13,7 +13,7 @@ import Footer from "./components/footer/footer.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 
-function App({ setCurrentUser }) {
+const App = ({ setCurrentUser, currentUser }) => {
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -31,19 +31,25 @@ function App({ setCurrentUser }) {
         setCurrentUser(userAuth);
       }
     });
-  }, [setCurrentUser]);
+  }, [ setCurrentUser]);
 
   return (
     <div className={styles.app}>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/sign" component={Sign} />
+        <Route
+          exact
+          path="/sign"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <Sign />
+          }
+        />
       </Switch>
       <Footer />
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser,
