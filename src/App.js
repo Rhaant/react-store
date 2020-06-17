@@ -6,6 +6,7 @@ import styles from "./app.module.scss";
 
 import Home from "./views/home.component";
 import Sign from "./views/sign.component";
+import ShopView from './views/shop.component'
 
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
@@ -38,6 +39,7 @@ const App = ({ setCurrentUser, currentUser }) => {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path='/shop' component={ShopView} />
         <Route
           exact
           path="/sign"

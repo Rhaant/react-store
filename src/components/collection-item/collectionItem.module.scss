@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+.collectionItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  align-items: center;
+  position: relative;
+
+  .image {
+    width: 100%;
+    height: 85%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 5px;
+    transition: 1s;
+  }
+
+  .customButton {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    width: 83%;
+    opacity: 0;
+    position: relative;
+    height: 20px;
+    background-color: white;
+    display: flex;
+    transition: 1s;
+    border: none
+
+  }
+
+  &:hover {
+    .image {
+      opacity: 0.8;
+    }
+
+    .customButton {
+      opacity: 1;
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.719);
+    }
+  }
+
+  .collectionFooter {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+
+    .name {
+      width: 80%;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      width: 20%;
+    }
+  }
+}
