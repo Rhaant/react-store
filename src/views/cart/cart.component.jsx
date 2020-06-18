@@ -11,6 +11,7 @@ const Cart = ({ cartItems }) => {
   return (
     <MainLayout>
       <div className={styles.cart}>
+      <h1>Cart:</h1>
         {cartItems.length ? (
           cartItems.map((cartItem) => (
             <CartItem key={cartItem.id} item={cartItem} />
