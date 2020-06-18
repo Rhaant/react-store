@@ -4,15 +4,17 @@ import { connect } from "react-redux";
 
 import styles from "./app.module.scss";
 
-import Home from "./views/home.component";
-import Sign from "./views/sign.component";
-import ShopView from './views/shop.component'
+import Home from "./views/home/home.component";
+import Sign from "./views/sign/sign.component";
+import ShopView from "./views/shop/shop.component";
+import Cart from './views/cart/cart.component'
 
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+
 
 const App = ({ setCurrentUser, currentUser }) => {
   useEffect(() => {
@@ -32,21 +34,20 @@ const App = ({ setCurrentUser, currentUser }) => {
         setCurrentUser(userAuth);
       }
     });
-  }, [ setCurrentUser]);
+  }, [setCurrentUser]);
 
   return (
     <div className={styles.app}>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path='/shop' component={ShopView} />
+        <Route exact path="/shop" component={ShopView} />
         <Route
           exact
           path="/sign"
-          render={() =>
-            currentUser ? <Redirect to="/" /> : <Sign />
-          }
+          render={() => (currentUser ? <Redirect to="/" /> : <Sign />)}
         />
+        <Route exact path='/cart' component={Cart} />
       </Switch>
       <Footer />
     </div>

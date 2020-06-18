@@ -2,10 +2,10 @@ import React from "react";
 
 import styles from './shop.module.scss'
 
-import CollectionPreview from "../components/collection-preview/collectionPreview.component";
-import MainLayout from "../components/layout/mainLayout.component";
+import CollectionPreview from "../../components/collection-preview/collectionPreview.component";
+import MainLayout from "../../components/layout/mainLayout.component";
 
-import { shopData } from "../data/shop.data";
+import { shopData } from "../../data/shop.data";
 
 const ShopView = () => {
   const collections = shopData;
