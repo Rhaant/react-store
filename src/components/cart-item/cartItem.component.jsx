@@ -31,12 +31,12 @@ const CartItem = ({ item, changeQuantity, removeItem }) => {
         <div className={styles.title}>{name}</div>
         <div className={styles.quantity}>
           <span className={styles.padd}>quantity:</span>
-          <button onClick={handleClick} value="up">
-            <FontAwesomeIcon icon={faChevronUp} />
-          </button>
-          <span className={styles.padd}>{quantity}</span>
           <button onClick={handleClick} value="down">
             <FontAwesomeIcon icon={faChevronDown} />
+          </button>
+          <span className={styles.padd}>{quantity}</span>
+          <button onClick={handleClick} value="up">
+            <FontAwesomeIcon icon={faChevronUp} />
           </button>
         </div>
         <div className={styles.price}>price: {price}</div>
