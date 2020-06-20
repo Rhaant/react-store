@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -6,9 +6,18 @@ import { auth } from "../../firebase/firebase.utils";
 
 import styles from "./header.module.scss";
 
-const Header = ({ currentUser, cartItems }) => {
-  let itemCount = 0;
+import Burger from "../burger/burger.component";
+import MobileMenu from "../mobile-menu/mobileMenu.component";
 
+const Header = ({ currentUser, cartItems }) => {
+  const [open, setOpen] = useState(false);
+
+  const toggleOpen = () => {
+    console.log(open);
+    setOpen(!open);
+  };
+
+  let itemCount = 0;
   if (cartItems.length) {
     itemCount = cartItems.reduce(
       (totalValue, cartItem) => totalValue + cartItem.quantity,
@@ -18,6 +27,13 @@ const Header = ({ currentUser, cartItems }) => {
 
   return (
     <div className={styles.header}>
+      <MobileMenu
+        itemCount={itemCount}
+        isOpen={open}
+        auth={auth}
+        currentUser={currentUser}
+        handleClick={toggleOpen}
+      />
       <div className={styles.logo}>
         <Link to="/">Logo</Link>
       </div>
@@ -27,7 +43,6 @@ const Header = ({ currentUser, cartItems }) => {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            {console.log(currentUser)}
             {currentUser ? (
               <Link to="/" onClick={() => auth.signOut()}>
                 Sign Out
@@ -45,6 +60,7 @@ const Header = ({ currentUser, cartItems }) => {
           </li>
         </ul>
       </div>
+      <Burger isOpen={open} handleClick={toggleOpen} />
     </div>
   );
 };

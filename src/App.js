@@ -8,6 +8,7 @@ import Home from "./views/home/home.component";
 import Sign from "./views/sign/sign.component";
 import ShopView from "./views/shop/shop.component";
 import Cart from './views/cart/cart.component'
+import Collection from './views/collection/collection.component'
 
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
@@ -48,6 +49,7 @@ const App = ({ setCurrentUser, currentUser }) => {
           render={() => (currentUser ? <Redirect to="/" /> : <Sign />)}
         />
         <Route exact path='/cart' component={Cart} />
+        <Route exact path='/shop/:id' component={Collection} />
       </Switch>
       <Footer />
     </div>
