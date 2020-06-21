@@ -11,6 +11,7 @@ import styles from "./cart.module.scss";
 
 import MainLayout from "../../components/layout/mainLayout.component";
 import CartItem from "../../components/cart-item/cartItem.component";
+import StripeCheckOutButton from "../../components/stripe-button/stripeButton.component";
 
 const Cart = ({ cartItems, totalPrice }) => {
   return (
@@ -26,6 +27,7 @@ const Cart = ({ cartItems, totalPrice }) => {
         )}
         <div className={styles.resume}>
           <span>Total Value: {totalPrice} </span>
+          <StripeCheckOutButton price={totalPrice} />
         </div>
       </div>
     </MainLayout>
