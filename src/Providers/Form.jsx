@@ -4,12 +4,9 @@ import { auth, createUserProfileDocument } from "../firebase/firebase.utils";
 
 class FormProvider extends React.Component {
   handleInputChange = (e) => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   handleSubmit = async (event) => {
