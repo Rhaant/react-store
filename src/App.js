@@ -7,15 +7,15 @@ import styles from "./app.module.scss";
 import Home from "./views/home/home.component";
 import Sign from "./views/sign/sign.component";
 import ShopView from "./views/shop/shop.component";
-import Cart from './views/cart/cart.component'
-import Collection from './views/collection/collection.component'
+import Cart from "./views/cart/cart.component";
+import Collection from "./views/collection/collection.component";
+import Contact from "./views/contact/contact.component";
 
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
-
 
 const App = ({ setCurrentUser, currentUser }) => {
   useEffect(() => {
@@ -36,8 +36,8 @@ const App = ({ setCurrentUser, currentUser }) => {
       }
 
       return () => {
-        unSubscribe()
-      }
+        unSubscribe();
+      };
     });
   }, [setCurrentUser]);
 
@@ -52,8 +52,9 @@ const App = ({ setCurrentUser, currentUser }) => {
           path="/sign"
           render={() => (currentUser ? <Redirect to="/" /> : <Sign />)}
         />
-        <Route exact path='/cart' component={Cart} />
-        <Route exact path='/shop/:id' component={Collection} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/shop/:id" component={Collection} />
       </Switch>
       <Footer />
     </div>
