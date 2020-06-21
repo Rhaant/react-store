@@ -11,12 +11,11 @@ const Collection = (props) => {
     (collection) => collection.routeName === props.match.params.id
   );
 
-  console.log(props.match.params, shopData);
 
   return (
     <div className={styles.collection}>
       <CollectionPreview
-        full
+        full={true}
         key={collectionToDisplay.id}
         {...collectionToDisplay}
       />
